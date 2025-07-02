@@ -1,0 +1,154 @@
+/* Importação do Tailwind CSS */
+@import url('https://cdn.tailwindcss.com');
+
+/* Estilos gerais do corpo */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* Light gray background */
+}
+
+/* Estilo do container principal */
+.container {
+    max-width: 800px;
+}
+
+/* Estilos para grupos de formulário */
+.form-group label {
+    font-weight: 500;
+    color: #334155; /* Slate 700 */
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Estilos para campos de input, select e textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1; /* Slate 300 */
+    border-radius: 0.5rem; /* Rounded corners */
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Estilos de foco para campos de input, select e textarea */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="time"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6366f1; /* Indigo 500 */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); /* Indigo 500 with opacity */
+}
+
+/* Estilos para o botão primário */
+.btn-primary {
+    background-color: #6366f1; /* Indigo 500 */
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Estilo de hover para o botão primário */
+.btn-primary:hover {
+    background-color: #4f46e5; /* Indigo 600 */
+}
+
+/* Estilos para o card principal */
+.card {
+    background-color: #ffffff;
+    border-radius: 1rem; /* More rounded corners */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+}
+
+/* Estilos para títulos de seção */
+.section-title {
+    color: #1e293b; /* Slate 900 */
+    font-weight: 700;
+    font-size: 1.75rem; /* text-2xl */
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e2e8f0; /* Slate 200 */
+    padding-bottom: 0.75rem;
+}
+
+/* Estilos para subtítulos de seção */
+.subsection-title {
+    color: #334155; /* Slate 700 */
+    font-weight: 600;
+    font-size: 1.25rem; /* text-xl */
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para grupos de rádio buttons */
+.radio-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 0.5rem;
+    accent-color: #6366f1; /* Indigo 500 */
+}
+
+/* Estilos para grupos de checkboxes */
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: #6366f1; /* Indigo 500 */
+}
+
+/* Estilos para a área de upload de fotos */
+.photo-upload-area {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.photo-upload-area:hover {
+    border-color: #6366f1;
+}
+
+/* Estilos para a pré-visualização de fotos */
+.photo-preview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+    display: none; /* Hidden by default */
+}
+
+/* Estilos para a mensagem de alerta/sucesso */
+.alert-message {
+    background-color: #fefcbf; /* Yellow 100 */
+    color: #854d0c; /* Yellow 800 */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    display: none; /* Hidden by default */
+}
+
+.alert-message.show {
+    display: block;
+}

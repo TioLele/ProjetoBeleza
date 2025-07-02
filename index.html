@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha da Beleza - Studio de Maquiagem</title>
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link para a fonte Inter do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link para o manifest.json para PWA -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+    <div class="container mx-auto card">
+        <h1 class="text-center text-3xl sm:text-4xl font-bold text-indigo-700 mb-6">Ficha da Beleza</h1>
+        <p class="text-center text-gray-600 mb-8">Agilize seu atendimento e personalize sua experiência!</p>
+
+        <form id="beautyForm" class="space-y-6">
+            <!-- Seção de Identificação do Cliente -->
+            <div class="section-title">Informações do Cliente</div>
+
+            <div class="form-group">
+                <label for="clientName">Qual seu nome e sobrenome?</label>
+                <input type="text" id="clientName" name="clientName" placeholder="Seu nome completo" required class="mt-1">
+            </div>
+
+            <!-- Seção de Foto da Face -->
+            <div class="subsection-title">Foto para Identificação do Rosto</div>
+            <div class="form-group">
+                <label for="facePhoto" class="block text-sm font-medium text-gray-700">Anexar foto da face:</label>
+                <div class="photo-upload-area mt-1 flex justify-center items-center flex-col" onclick="document.getElementById('facePhoto').click()">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L40 32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <p class="mt-1 text-sm text-gray-600">Clique para selecionar uma foto</p>
+                    <p class="text-xs text-gray-500">PNG, JPG, PDF até 10MB</p>
+                    <input id="facePhoto" name="facePhoto" type="file" class="sr-only" accept="image/png, image/jpeg, application/pdf" onchange="previewImage(event, 'facePhotoPreview')">
+                </div>
+                <img id="facePhotoPreview" class="photo-preview mx-auto mt-4" alt="Pré-visualização da foto do rosto">
+                <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 text-blue-800 rounded-lg" role="alert">
+                    <p class="font-bold">Instruções para a foto:</p>
+                    <ul class="list-disc list-inside mt-2 text-sm">
+                        <li>Estar sem maquiagem, com pele limpa e hidratada.</li>
+                        <li>Estar em local iluminado.</li>
+                        <li>Com fundo claro.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Seção de Características da Pele -->
+            <div class="section-title">Características da Pele</div>
+
+            <div class="form-group">
+                <label for="faceShape">Tipo de rosto (Identificação pelo aplicativo):</label>
+                <select id="faceShape" name="faceShape" class="mt-1" disabled>
+                    <option value="">Identificando...</option>
+                    <option value="oval">Oval</option>
+                    <option value="triangulo">Triângulo</option>
+                    <option value="quadrado">Quadrado</option>
+                    <option value="redondo">Redondo</option>
+                    <option value="hexagonal">Hexagonal</option>
+                    <option value="diamante">Diamante</option>
+                </select>
+                <p class="text-sm text-gray-500 mt-1">Este campo será preenchido automaticamente pelo aplicativo.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="skinType">Tipo de pele:</label>
+                <select id="skinType" name="skinType" class="mt-1">
+                    <option value="">Selecione</option>
+                    <option value="mista">Mista</option>
+                    <option value="oleosa">Oleosa</option>
+                    <option value="normal">Normal</option>
+                    <option value="seca">Seca</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="skinTone">Tom da pele:</label>
+                <select id="skinTone" name="skinTone" class="mt-1">
+                    <option value="">Selecione</option>
+                    <option value="clara">Clara</option>
+                    <option value="media">Média</option>
+                    <option value="escura">Escura</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="skinUndertone">Subtom de pele (Identificação pelo aplicativo):</label>
+                <select id="skinUndertone" name="skinUndertone" class="mt-1" disabled>
+                    <option value="">Identificando...</option>
+                    <option value="quente">Quente</option>
+                    <option value="frio">Frio</option>
+                    <option value="neutro">Neutro</option>
+                </select>
+                <p class="text-sm text-gray-500 mt-1">Este campo será preenchido automaticamente pelo aplicativo.</p>
+            </div>
+
+            <div class="form-group">
+                <label>Condição da pele:</label>
+                <div class="checkbox-group grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
+                    <label><input type="checkbox" name="skinCondition" value="jovem"> Jovem</label>
+                    <label><input type="checkbox" name="skinCondition" value="madura"> Madura</label>
+                    <label><input type="checkbox" name="skinCondition" value="rosacea"> Rosácea</label>
+                    <label><input type="checkbox" name="skinCondition" value="acne"> Acne</label>
+                    <label><input type="checkbox" name="skinCondition" value="melasma"> Melasma</label>
+                    <label><input type="checkbox" name="skinCondition" value="dermatite alergica"> Dermatite alérgica ou de contato</label>
+                    <label><input type="checkbox" name="skinCondition" value="herpes"> Herpes</label>
+                    <label><input type="checkbox" name="skinCondition" value="conjuntivite"> Conjuntivite</label>
+                    <label><input type="checkbox" name="skinCondition" value="vitiligo"> Vitiligo</label>
+                    <label><input type="checkbox" name="skinCondition" value="outros" id="otherSkinConditionCheckbox"> Outros:</label>
+                </div>
+                <input type="text" id="otherSkinCondition" name="otherSkinConditionText" placeholder="Especifique outras condições" class="mt-2 hidden">
+            </div>
+
+            <div class="form-group">
+                <label>Alergia a algum produto?</label>
+                <div class="radio-group mt-1">
+                    <label><input type="radio" name="allergies" value="sim" onchange="toggleField('allergyProduct', true)"> Sim</label>
+                    <label><input type="radio" name="allergies" value="nao" onchange="toggleField('allergyProduct', false)"> Não</label>
+                </div>
+                <input type="text" id="allergyProduct" name="allergyProduct" placeholder="Qual produto?" class="mt-2 hidden">
+            </div>
+
+            <div class="form-group">
+                <label>Possui micro pigmentação em alguma região do rosto?</label>
+                <div class="radio-group mt-1">
+                    <label><input type="radio" name="micropigmentation" value="sim" onchange="toggleField('micropigmentationAreaGroup', true)"> Sim</label>
+                    <label><input type="radio" name="micropigmentation" value="nao" onchange="toggleField('micropigmentationAreaGroup', false)"> Não</label>
+                </div>
+                <div id="micropigmentationAreaGroup" class="checkbox-group grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 hidden">
+                    <label><input type="checkbox" name="micropigmentationArea" value="boca"> Boca</label>
+                    <label><input type="checkbox" name="micropigmentationArea" value="sobrancelha"> Sobrancelha</label>
+                    <label><input type="checkbox" name="micropigmentationArea" value="palpebra superior"> Pálpebra superior</label>
+                    <label><input type="checkbox" name="micropigmentationArea" value="palpebra inferior"> Pálpebra inferior</label>
+                    <label><input type="checkbox" name="micropigmentationArea" value="linha d'agua"> Linha d'água</label>
+                    <label><input type="checkbox" name="micropigmentationArea" value="outros" id="otherMicropigmentationCheckbox"> Outros:</label>
+                    <input type="text" id="otherMicropigmentation" name="otherMicropigmentationText" placeholder="Especifique outras regiões" class="mt-2 hidden col-span-2">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Possui extensão de cílios?</label>
+                <div class="radio-group mt-1">
+                    <label><input type="radio" name="eyelashExtension" value="sim"> Sim</label>
+                    <label><input type="radio" name="eyelashExtension" value="nao"> Não</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Está fazendo algum tratamento estético?</label>
+                <div class="radio-group mt-1">
+                    <label><input type="radio" name="aestheticTreatment" value="sim" onchange="toggleField('aestheticTreatmentName', true)"> Sim</label>
+                    <label><input type="radio" name="aestheticTreatment" value="nao" onchange="toggleField('aestheticTreatmentName', false)"> Não</label>
+                </div>
+                <input type="text" id="aestheticTreatmentName" name="aestheticTreatmentName" placeholder="Qual tratamento?" class="mt-2 hidden">
+            </div>
+
+            <!-- Seção de Detalhes do Evento -->
+            <div class="section-title">Detalhes do Agendamento</div>
+
+            <div class="form-group">
+                <label for="eventType">Qual seria o evento?</label>
+                <select id="eventType" name="eventType" class="mt-1">
+                    <option value="">Selecione</option>
+                    <option value="madrinha">Madrinha</option>
+                    <option value="mae da noiva">Mãe da noiva</option>
+                    <option value="convidada">Convidada</option>
+                    <option value="formanda">Formanda</option>
+                    <option value="debutante">Debutante</option>
+                    <option value="aniversariante">Aniversariante</option>
+                    <option value="evento social">Evento social</option>
+                    <option value="baile de gala">Baile de gala</option>
+                    <option value="gestante">Gestante</option>
+                    <option value="ensaio fotografico">Ensaio fotográfico</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="appointmentTime">Qual horário?</label>
+                <input type="time" id="appointmentTime" name="appointmentTime" required class="mt-1">
+            </div>
+
+            <div class="form-group">
+                <label for="clothingColor">Qual cor da roupa?</label>
+                <input type="text" id="clothingColor" name="clothingColor" placeholder="Ex: Vermelho, Azul, Preto" class="mt-1">
+            </div>
+
+            <div class="form-group">
+                <label for="accessoryColor">Cor dos acessórios:</label>
+                <select id="accessoryColor" name="accessoryColor" class="mt-1">
+                    <option value="">Selecione</option>
+                    <option value="prata">Prata</option>
+                    <option value="dourado">Dourado</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <!-- Seção de Preferências de Maquiagem -->
+            <div class="section-title">Preferências de Maquiagem</div>
+
+            <div class="form-group">
+                <label>Já se maquiou antes?</label>
+                <div class="radio-group mt-1">
+                    <label><input type="radio" name="makeupExperience" value="sim"> Sim</label>
+                    <label><input type="radio" name="makeupExperience" value="nao"> Não</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="highlightPart">Qual parte do seu rosto você gosta que realça mais?</label>
+                <input type="text" id="highlightPart" name="highlightPart" placeholder="Ex: Olhos, Boca, Maçãs do rosto" class="mt-1">
+            </div>
+
+            <div class="form-group">
+                <label for="botherPart">Qual parte do rosto que te incomoda?</label>
+                <input type="text" id="botherPart" name="botherPart" placeholder="Ex: Olheiras, Manchas, Cicatrizes" class="mt-1">
+            </div>
+
+            <div class="form-group">
+                <label>Possui alguma foto inspiração de maquiagem?</label>
+                <div class="radio-group mt-1">
+                    <label><input type="radio" name="inspirationPhoto" value="sim" onchange="toggleField('inspirationPhotoUploadArea', true)"> Sim</label>
+                    <label><input type="radio" name="inspirationPhoto" value="nao" onchange="toggleField('inspirationPhotoUploadArea', false)"> Não</label>
+                </div>
+                <div id="inspirationPhotoUploadArea" class="photo-upload-area mt-4 flex justify-center items-center flex-col hidden" onclick="document.getElementById('inspirationPhoto').click()">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L40 32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <p class="mt-1 text-sm text-gray-600">Clique para anexar arquivo</p>
+                    <p class="text-xs text-gray-500">PDF, JPEG, PNG até 10MB</p>
+                    <input id="inspirationPhoto" name="inspirationPhotoFile" type="file" class="sr-only" accept="application/pdf, image/jpeg, image/png" onchange="previewImage(event, 'inspirationPhotoPreview')">
+                </div>
+                <img id="inspirationPhotoPreview" class="photo-preview mx-auto mt-4" alt="Pré-visualização da foto de inspiração">
+            </div>
+
+            <!-- Seção de Aniversário (Opcional) -->
+            <div class="section-title">Aniversário (Opcional)</div>
+            <div class="form-group">
+                <label for="birthDate">Aqui no Studio, aniversário é motivo de presente, me diz qual é a sua data?</label>
+                <input type="date" id="birthDate" name="birthDate" class="mt-1">
+            </div>
+
+            <div class="alert-message" id="successMessage">
+                <p class="font-bold">Sucesso!</p>
+                <p>Sua ficha foi enviada com sucesso. Em breve entraremos em contato!</p>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button type="submit" class="btn-primary w-full sm:w-auto">Enviar Ficha</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
